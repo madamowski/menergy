@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html ng-app="metersApp">
+  <head>
+    <link rel="stylesheet" type="text/css" href="bootstrap/dist/css/bootstrap.min.css" />
+    <script type="text/javascript" src="angularjs/angular.min.js"></script>
+    <script src="angular-resource/angular-resource.js"></script>
+    <script type="text/javascript" src="javascripts/app.js"></script>
+    <script type="text/javascript" src="javascripts/meterReadings.js"></script>
+    <script type="text/javascript" src="javascripts/login.js"></script>
+  </head>
+  <body>
+      
+    <nav class="navbar navbar-inverse navbar-fixed-top" ng-controller="loginCtrl">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">M Energy</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <form class="navbar-form navbar-right">
+            <div class="form-group" ng-hide="user.loggedIn">
+              <input type="text" placeholder="Username" class="form-control" ng-model="user.username">
+            </div>
+            <div class="form-group" ng-hide="user.loggedIn">
+             <input type="password" placeholder="Password" class="form-control" ng-model="user.password">
+            </div>
+              
+            <strong class="text-muted" ng-show="user.loggedIn">{{user.username}} </strong>
+            
+            <button type="submit" class="btn btn-success" ng-hide="user.loggedIn" ng-click="login()">Sign in</button>
+            <button type="submit" class="btn btn-info" ng-hide="user.loggedIn">Register</button>
+            <button type="submit" class="btn btn-success" ng-show="user.loggedIn" ng-click="logout()">Sign Out</button>
+          </form>
+          
+        </div>
+      </div>
+    </nav>      
+      
+      <h1>&nbsp;</h1>
+
+    <div ng-controller="meterReadingsCtrl" ng-show="loggedIn">
+        
+        <form novalidate class="simple-form">
+            <lable>Date:</lable>
+            <input type="text" ng-model="newMeterReading.date"></input>
+            <label>Gas:</label>
+            <input type="text" ng-model="newMeterReading.gas"></input>
+            <Label>Electricity</Label>
+            <input type="text" ng-model="newMeterReading.electricity"></input>
+            <input type="submit" ng-click="add(newMeterReading)" value="Add"/>
+        </form>
+        
+        <h4>Meter Readings</h4>
+        <table class="table">
+            <tr class="active">
+                <th>Date</th>
+                <th>Gas</th>
+                <th>Electricity</th>
+                <th>&nbsp;</th>
+            </tr>
+            <tr ng-repeat="meterReading in meterReadings">
+                <td>{{meterReading.date | date}}</td>
+                <td>{{meterReading.gas}}</td>
+                <td>{{meterReading.electricity}}</td>
+                <td><input type="submit" ng-click="delete(meterReading)" value="Delete"/></td>
+            </tr>
+        </table>
+    </div>
+  </body>
+</html>

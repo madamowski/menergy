@@ -1,0 +1,24 @@
+{
+  "name": "menergy",
+  "version": "0.0.1",
+  "authors": [
+    "Marcin Adamowski"
+  ],
+  "moduleType": [
+    "node"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angularjs": "~1.3.11",
+    "angular-resource": "~1.3.11",
+    "bootstrap": "~3.3.2"
+  }
+}

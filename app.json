@@ -1,0 +1,7 @@
+{
+  "name": "menergy",
+  "description": "menergy",
+  "repository": "https://github.com/madamowski/menergy",
+  "logo": "https://m-energy.herokuapp.com/node.svg",
+  "keywords": ["node", "express", "angularjs"]
+}
