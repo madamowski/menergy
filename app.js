@@ -12,7 +12,16 @@ var jsonwebtoken = require('jsonwebtoken');
 var expressJwt = require('express-jwt');
 var moment = require('moment');
 
-mongoose.connect('mongodb://localhost:27017/menergy');
+var uristring =
+    process.env.MONGOLAB_URI ||
+    process.env.MONGOHQ_URL ||
+    'mongodb://localhost:27017/menergy';
+
+// The http server will listen to an appropriate port, or default to
+// port 5000.
+//var theport = process.env.PORT || 5000;
+
+mongoose.connect(uristring);
 
 var index = require('./routes/index');
 var login = require('./routes/login');
