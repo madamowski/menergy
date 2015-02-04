@@ -54,16 +54,46 @@ router.post('/register', function (req, res) {
   User.find({'username':req.body.username},function(err,users){
             
      if(err){
-         res.status(401).send('Wrong username');
+         console.error('error reading user');
+         res.status(401).send('error reading user');
          return;
      }
       
      if(users.length>0){
+         console.error('User already exists');
          res.status(401).send('User already exists');
          return;
      }  
      
-    userController.postUsers(req,res);
+    var user = new User({
+        username: req.body.username,
+        password: req.body.password
+    });
+    
+    user.save(function(err, user) {
+        if (err){
+          console.error(err);
+          res.send(err);
+        }
+
+        var token = jsonwebtoken.sign(user, secret, {expiresInMinutes: 1});
+        res.json({
+          token : token,
+          user: user.toJSON()
+        });  
+      
+  });  
+      
+    //var user = userController.postUsers(req,res);
+      
+    console.info('login: '+user);
+      
+    //
+//
+//        res.json({
+//          token : token,
+//          user: user.toJSON()
+//        });
       
   });
 }); 
