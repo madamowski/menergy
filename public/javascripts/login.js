@@ -37,7 +37,7 @@
                     
                     $rootScope.$broadcast('loggedIn', false);
                 });
-        }
+        };
         
         $scope.register = function(){
             
@@ -66,14 +66,14 @@
                     
                     $rootScope.$broadcast('loggedIn', false);
                 });
-        }
+        };
         
         $scope.logout = function(){
             
             delete $window.sessionStorage.token;
             $scope.user.loggedIn = false;
             $rootScope.$broadcast('loggedIn', false);
-        }
+        };
         
         //var MeterReadings = $resource('/api/meterReadings/:id', {userId:'@id'});
         

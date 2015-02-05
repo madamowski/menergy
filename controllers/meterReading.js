@@ -6,7 +6,7 @@ exports.postMeterReadings = function(req, res) {
   var meterReading = new MeterReading();
 
   console.info('gas.body:'+req.body.gas);
-  console.info('gas.header:'+req.header.gas)    
+  console.info('gas.header:'+req.header.gas);    
     
   // Set the beer properties that came from the POST data
   meterReading.date = req.body.date;

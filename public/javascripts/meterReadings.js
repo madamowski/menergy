@@ -16,13 +16,13 @@
                 
                 $log.info('Found '+$scope.meterReadings.length+' readings');
             });
-        }
+        };
         
         $scope.newMeterReading = {
             date:'2014-01-02', 
             gas:'15000', 
             electricity:'1000'
-        }
+        };
         
         $scope.add = function(newMeterReading){
             
@@ -35,7 +35,7 @@
             newEntry.$save().then(function(result){
                 $scope.refresh();
             });    
-        }
+        };
         
         $scope.delete = function(meterReading){
             
@@ -44,7 +44,7 @@
             MeterReading.remove({'id':meterReading._id}).$promise.then(function(result){
                 $scope.refresh();
             });    
-        }
+        };
         
         $scope.$on('loggedIn', function (event, arg) { 
             

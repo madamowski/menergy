@@ -19,7 +19,7 @@ router.post('/login', function (req, res) {
          return;
      }
       
-     if(users.length==0){
+     if(users.length===0){
          res.status(401).send('User not found');
          return;
      }  
