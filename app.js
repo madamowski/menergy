@@ -26,6 +26,7 @@ mongoose.connect(uristring);
 var index = require('./routes/index');
 var login = require('./routes/login');
 var api = require('./routes/api');
+var email = require('./routes/email');
 var user = require('./routes/user');
 var meterReading = require('./routes/meterReading');
 
@@ -51,6 +52,7 @@ app.use('/api', expressJwt({secret: secret}));
 app.use('/', index);
 app.use('/', login);
 app.use('/', api);
+app.use('/', email);
 app.use('/', user);
 app.use('/', meterReading);
 
